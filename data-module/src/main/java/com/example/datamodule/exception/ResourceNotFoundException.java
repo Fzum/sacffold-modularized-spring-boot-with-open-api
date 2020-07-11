@@ -1,4 +1,4 @@
-package com.example.webmodule.exception;
+package com.example.datamodule.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;

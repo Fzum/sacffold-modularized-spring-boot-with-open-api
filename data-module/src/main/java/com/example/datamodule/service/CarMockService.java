@@ -1,6 +1,6 @@
-package com.example.webmodule.controller;
+package com.example.datamodule.service;
 
-import com.example.webmodule.exception.CarNotFoundException;
+import com.example.datamodule.exception.CarNotFoundException;
 import org.openapitools.model.Car;
 import org.springframework.stereotype.Service;
 

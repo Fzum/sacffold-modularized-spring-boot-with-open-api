@@ -1,4 +1,4 @@
-package com.example.webmodule.exception;
+package com.example.datamodule.exception;
 
 public class CarNotFoundException extends ResourceNotFoundException {
     public CarNotFoundException() {

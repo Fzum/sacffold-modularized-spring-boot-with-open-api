@@ -35,10 +35,6 @@
                     <artifactId>spring-boot-starter</artifactId>
                 </exclusion>
                 <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-web</artifactId>
-                </exclusion>
-                <exclusion>
                     <groupId>io.swagger</groupId>
                     <artifactId>swagger-annotations</artifactId>
                 </exclusion>

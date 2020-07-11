@@ -1,4 +1,4 @@
-package com.example.webmodule;
+package com.example.webmodule.errorhandling;
 
 import org.openapitools.model.ModelApiResponse;
 import org.springframework.http.HttpStatus;
@@ -18,6 +18,18 @@ class GlobalErrorHandler extends ResponseEntityExceptionHandler {
 
         modelApiResponse.code(status.value());
         modelApiResponse.message(e.getReason());
+
+        return new ResponseEntity<>(modelApiResponse, status);
+    }
+
+    @ExceptionHandler(Exception.class)
+    private ResponseEntity<ModelApiResponse> handleUnknownException(Exception e) {
+        final HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
+        final String message = "There has been an error! Pleas contact me!";
+        final ModelApiResponse modelApiResponse = new ModelApiResponse();
+
+        modelApiResponse.code(status.value());
+        modelApiResponse.message(message);
 
         return new ResponseEntity<>(modelApiResponse, status);
     }

@@ -1,4 +1,4 @@
-package com.example.webmodule.exception;
+package com.example.datamodule.exception;
 
 public class BikeNotFoundException extends ResourceNotFoundException {
     public BikeNotFoundException() {
