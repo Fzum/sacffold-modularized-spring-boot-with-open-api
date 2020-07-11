@@ -1,0 +1,181 @@
+openapi: 3.0.1
+info:
+  title: Fabian API
+  description: 'this is a test api'
+  version: 1.0.0
+servers:
+  - url: 'http://localhost:8080'
+tags:
+  - name: bike
+    description: this resource represents a bike
+paths:
+  /bike:
+    get:
+      tags:
+        - bike
+      summary: find all bikes in the system
+      description: no arg required, returns all bikes
+      operationId: findAllBikes
+      responses:
+        200:
+          description: successfully received all bikes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Bike'
+    post:
+      tags:
+        - bike
+      summary: add a new bike to the system
+      operationId: addBike
+      requestBody:
+        required: true
+        description: bike that needs to be added
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Bike'
+      responses:
+        200:
+          description: successfully added new bike
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        405:
+          description: Invalid input
+          content: {}
+  /bike/{bikeId}:
+    get:
+      tags:
+        - bike
+      summary: find bike by id
+      description: returns the bike of the given id
+      operationId: getBikeById
+      parameters:
+        - name: bikeId
+          in: path
+          description: Id of the bike to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        200:
+          description: successfully found the requested bike
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bike'
+        400:
+          description: invalid id supplied
+          content: {}
+        404:
+          description: bike not found
+          content: {}
+
+  /car:
+    get:
+      tags:
+        - car
+      summary: find all cars in the system
+      description: no arg required, returns all cars
+      operationId: findAllCars
+      responses:
+        200:
+          description: successfully received all cars
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Car'
+    post:
+      tags:
+        - car
+      summary: add a new car to the system
+      operationId: addCar
+      requestBody:
+        required: true
+        description: car that needs to be added
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Car'
+      responses:
+        200:
+          description: successfully added new car
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        405:
+          description: Invalid input
+          content: {}
+  /car/{carId}:
+    get:
+      tags:
+        - car
+      summary: find car by id
+      description: returns the car of the given id
+      operationId: getCarById
+      parameters:
+        - name: carId
+          in: path
+          description: Id of the car to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        200:
+          description: successfully found the requested car
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Car'
+        400:
+          description: invalid id supplied
+          content: {}
+        404:
+          description: bike not found
+          content: {}
+
+components:
+  schemas:
+    ApiResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+    Bike:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        brand:
+          type: string
+          description: Brand Type
+          enum:
+            - Specialized
+            - Puch
+            - KTM
+    Car:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        brand:
+          type: string
+          description: Brand Type
+          enum:
+            - Mercedes
+            - Porsche
+            - BMW

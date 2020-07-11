@@ -60,7 +60,7 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <inputSpec>${project.basedir}/api.yaml</inputSpec>
+                            <inputSpec>${project.basedir}/api2.yaml</inputSpec>
                             <generatorName>spring</generatorName>
                             <configOptions>
                                 <sourceFolder>src/gen/java/main</sourceFolder>

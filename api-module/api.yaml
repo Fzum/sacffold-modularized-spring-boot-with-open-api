@@ -593,6 +593,7 @@ paths:
         404:
           description: User not found
           content: {}
+
 components:
   schemas:
     Order:
