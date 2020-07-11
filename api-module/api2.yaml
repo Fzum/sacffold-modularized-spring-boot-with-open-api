@@ -75,7 +75,6 @@ paths:
         404:
           description: bike not found
           content: {}
-
   /car:
     get:
       tags:
