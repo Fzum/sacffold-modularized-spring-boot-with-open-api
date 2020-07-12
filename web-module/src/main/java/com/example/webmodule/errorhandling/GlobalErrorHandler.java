@@ -1,6 +1,6 @@
 package com.example.webmodule.errorhandling;
 
-import org.openapitools.model.ModelApiResponse;
+import org.openapitools.model.ApiResponseDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -12,25 +12,25 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 class GlobalErrorHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(ResponseStatusException.class)
-    private ResponseEntity<ModelApiResponse> handleBikeNotFoundException(ResponseStatusException e) {
+    private ResponseEntity<ApiResponseDto> handleBikeNotFoundException(ResponseStatusException e) {
         final HttpStatus status = e.getStatus();
-        final ModelApiResponse modelApiResponse = new ModelApiResponse();
+        final ApiResponseDto ApiResponseDto = new ApiResponseDto();
 
-        modelApiResponse.code(status.value());
-        modelApiResponse.message(e.getReason());
+        ApiResponseDto.code(status.value());
+        ApiResponseDto.message(e.getReason());
 
-        return new ResponseEntity<>(modelApiResponse, status);
+        return new ResponseEntity<>(ApiResponseDto, status);
     }
 
     @ExceptionHandler(Exception.class)
-    private ResponseEntity<ModelApiResponse> handleUnknownException(Exception e) {
+    private ResponseEntity<ApiResponseDto> handleUnknownException(Exception e) {
         final HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
         final String message = "There has been an error! Pleas contact me!";
-        final ModelApiResponse modelApiResponse = new ModelApiResponse();
+        final ApiResponseDto ApiResponseDto = new ApiResponseDto();
 
-        modelApiResponse.code(status.value());
-        modelApiResponse.message(message);
+        ApiResponseDto.code(status.value());
+        ApiResponseDto.message(message);
 
-        return new ResponseEntity<>(modelApiResponse, status);
+        return new ResponseEntity<>(ApiResponseDto, status);
     }
 }

@@ -62,6 +62,7 @@
                         <configuration>
                             <inputSpec>${project.basedir}/api2.yaml</inputSpec>
                             <generatorName>spring</generatorName>
+                            <modelNameSuffix>Dto</modelNameSuffix>
                             <configOptions>
                                 <sourceFolder>src/gen/java/main</sourceFolder>
                                 <interfaceOnly>true</interfaceOnly>

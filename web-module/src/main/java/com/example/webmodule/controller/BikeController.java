@@ -2,8 +2,8 @@ package com.example.webmodule.controller;
 
 import com.example.datamodule.exception.BikeNotFoundException;
 import org.openapitools.api.BikeApi;
-import org.openapitools.model.Bike;
-import org.openapitools.model.ModelApiResponse;
+import org.openapitools.model.ApiResponseDto;
+import org.openapitools.model.BikeDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,19 +14,19 @@ import java.util.List;
 @RestController
 public class BikeController implements BikeApi {
     @Override
-    public ResponseEntity<ModelApiResponse> addBike(@Valid Bike bike) {
+    public ResponseEntity<ApiResponseDto> addBike(@Valid BikeDto bike) {
         // unknown exception => general error
         throw new UnresolvedAddressException();
     }
 
     @Override
-    public ResponseEntity<List<Bike>> findAllBikes() {
+    public ResponseEntity<List<BikeDto>> findAllBikes() {
         // unknown exception => general error
         throw new RuntimeException();
     }
 
     @Override
-    public ResponseEntity<Bike> getBikeById(Long bikeId) {
+    public ResponseEntity<BikeDto> getBikeById(Long bikeId) {
         throw new BikeNotFoundException();
     }
 }
