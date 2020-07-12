@@ -63,6 +63,7 @@
                             <inputSpec>${project.basedir}/api2.yaml</inputSpec>
                             <generatorName>spring</generatorName>
                             <modelNameSuffix>Dto</modelNameSuffix>
+                            <supportingFilesToGenerate>README.md</supportingFilesToGenerate>
                             <configOptions>
                                 <sourceFolder>src/gen/java/main</sourceFolder>
                                 <interfaceOnly>true</interfaceOnly>
