@@ -12,25 +12,25 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 class GlobalErrorHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(ResponseStatusException.class)
-    private ResponseEntity<ApiResponseDto> handleBikeNotFoundException(ResponseStatusException e) {
+    private ResponseEntity<ApiResponseDto> handleResourceNotFoundException(ResponseStatusException e) {
         final HttpStatus status = e.getStatus();
-        final ApiResponseDto ApiResponseDto = new ApiResponseDto();
+        final ApiResponseDto apiResponseDto = new ApiResponseDto();
 
-        ApiResponseDto.code(status.value());
-        ApiResponseDto.message(e.getReason());
+        apiResponseDto.code(status.value());
+        apiResponseDto.message(e.getReason());
 
-        return new ResponseEntity<>(ApiResponseDto, status);
+        return new ResponseEntity<>(apiResponseDto, status);
     }
 
     @ExceptionHandler(Exception.class)
     private ResponseEntity<ApiResponseDto> handleUnknownException(Exception e) {
         final HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
         final String message = "There has been an error! Pleas contact me!";
-        final ApiResponseDto ApiResponseDto = new ApiResponseDto();
+        final ApiResponseDto apiResponseDto = new ApiResponseDto();
 
-        ApiResponseDto.code(status.value());
-        ApiResponseDto.message(message);
+        apiResponseDto.code(status.value());
+        apiResponseDto.message(message);
 
-        return new ResponseEntity<>(ApiResponseDto, status);
+        return new ResponseEntity<>(apiResponseDto, status);
     }
 }
