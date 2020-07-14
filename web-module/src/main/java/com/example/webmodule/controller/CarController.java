@@ -1,6 +1,5 @@
 package com.example.webmodule.controller;
 
-import com.example.datamodule.service.CarMockService;
 import org.openapitools.api.CarApi;
 import org.openapitools.model.ApiResponseDto;
 import org.openapitools.model.CarDto;
@@ -12,12 +11,6 @@ import java.util.List;
 
 @RestController
 public class CarController implements CarApi {
-
-    private final CarMockService service;
-
-    public CarController(CarMockService service) {
-        this.service = service;
-    }
 
     @Override
     public ResponseEntity<ApiResponseDto> addCar(@Valid CarDto car) {
@@ -31,6 +24,6 @@ public class CarController implements CarApi {
 
     @Override
     public ResponseEntity<CarDto> getCarById(Long carId) {
-        return ResponseEntity.ok(service.gerCarById(carId));
+        return null;
     }
 }
